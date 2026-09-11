@@ -1,0 +1,1 @@
+{"name":"zaichang","version":"0.2.0","private":true,"description":"在场：有语境的亲友回应与一次小约定。","engines":{"node":">=22"},"scripts":{"start":"node server.cjs","test":"node test.cjs && node api.test.cjs","build":"node build.cjs"}}
