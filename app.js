@@ -52,7 +52,8 @@ async function generateReply(){
 }
 async function runGeneration(payload){
   const revision=++aiRevision,sentFor=JSON.stringify(payload);
-  const controller=new AbortController();aiController=controller;const deadline=setTimeout(()=>controller.abort(),50000);
+  // Render free instances may need a minute to wake before the request reaches Node.
+  const controller=new AbortController();aiController=controller;const deadline=setTimeout(()=>controller.abort(),90000);
   aiBusy=true;$('ai-error').hidden=true;showStep(3);renderResponse();
   try{
     const result=await fetch(new URL('reply',apiBase),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),credentials:'omit',signal:controller.signal});
@@ -101,3 +102,4 @@ if(modelContext?.registerTool){const lifecycle=new AbortController();try{Promise
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderPlan();});setInterval(()=>{if(view==='plan'&&!document.hidden)renderPlan();},30000);
 startResponse(C.examples.friend,'friend');syncPlanFields();
 })();
+
