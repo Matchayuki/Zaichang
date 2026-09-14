@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f6f3ec">
+  <meta name="theme-color" content="#f4ebdd">
   <meta name="zaichang-api" content="https://zaichang.onrender.com/api/">
   <meta name="description" content="朋友不开心，却不知道怎么回？在场陪你理清三件小事，把关心变成一句说得出口的话。">
   <title>在场 · 陪你把关心说出口</title>
   <link rel="icon" href="mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="fonts/wenkai/font.css">
   <link rel="stylesheet" href="style.css">
   <script defer src="core.js"></script>
   <script defer src="app.js"></script>
@@ -15,7 +16,7 @@
 <body>
   <a class="skip" href="#workbench">跳到回应练习</a>
   <header class="site-header">
-    <a class="brand" href="#reply" aria-label="在场首页"><img src="mark.svg" width="36" height="36" alt=""><strong>在场<span>just be here.</span></strong></a>
+    <a class="brand" href="#reply" aria-label="在场首页"><img src="mark.svg" width="36" height="36" alt=""><strong>在场<span>把关心说具体</span></strong></a>
     <nav class="view-nav" aria-label="主要功能">
       <button data-view="reply" aria-current="page">回一句话</button>
       <button data-view="plan">留一点时间 <i id="plan-dot" hidden></i></button>
@@ -27,29 +28,29 @@
     <section id="reply-view" class="reply-layout">
       <aside class="intro">
         <div class="intro-copy">
-          <span class="eyebrow"><i></i> 给那个想关心，又怕说错话的你</span>
-          <h1>有些关心，<br>差一句<span>说出口。</span></h1>
-          <p>朋友说「最近不太好」，<br>你在输入框里，写了又删。</p>
-          <p class="intro-invitation">来，我们一起把这句慢慢写好。</p>
-          <button id="begin" class="start-link">从这里开始 <span aria-hidden="true">↗</span></button>
+          <span class="eyebrow">给想关心，又怕说错的人</span>
+          <h1>有些话，<br><span>可以慢慢回。</span></h1>
+          <p>不用找到完美答案。先听懂对方，也照顾自己的余力，再写一句真的说得出口的话。</p>
+          <button id="begin" class="start-link">从这句话开始 <span aria-hidden="true">→</span></button>
         </div>
         <figure class="friendship-art">
-          <div class="art-window"><img src="friendship.png" width="1536" height="1024" alt="夜晚，两个朋友窝在蓝色沙发上，一个裹着毯子，另一个安静地陪在身边"></div>
-          <figcaption><span>不一定有好办法，但可以陪一会儿。</span><span aria-hidden="true">✳</span></figcaption>
+          <div class="art-window"><img src="friendship-oil.png" width="1536" height="1024" alt="油画：暖灯下，一位疲惫的女生裹着毯子，另一位捧着杯子安静地陪在身边"></div>
+          <figcaption><span>灯还亮着。你不必马上解决什么。</span></figcaption>
         </figure>
-        <p class="intro-footnote"><span aria-hidden="true">↳</span> 不用成为很会安慰的人，从一句真心话开始。</p>
+        <p class="intro-footnote">好朋友不是答案，是那盏还亮着的灯。</p>
       </aside>
 
       <section id="workbench" class="workbench" aria-label="三步写好一句回应">
-        <div class="workbench-heading"><span>一段关心，慢慢来</span><span id="step-count" aria-live="polite">01 / 03</span></div>
+        <img class="ambient-vignette" src="ambient-vignette.png" alt="" aria-hidden="true">
+        <div class="workbench-heading"><span>回应工作台</span><span id="step-count" aria-live="polite">1 / 3</span></div>
         <nav class="step-nav" aria-label="回应步骤">
-          <button data-step="1" aria-current="step"><span class="step-number">1</span><span>听见TA</span></button>
-          <button data-step="2" disabled><span class="step-number">2</span><span>看看自己</span></button>
-          <button data-step="3" disabled><span class="step-number">3</span><span>回一句话</span></button>
+          <button data-step="1" aria-current="step"><span class="step-number">01</span><span class="step-copy"><strong>听原话</strong><small>先确认发生了什么</small></span><span class="step-arrow" aria-hidden="true">›</span></button>
+          <button data-step="2" disabled><span class="step-number">02</span><span class="step-copy"><strong>顾自己</strong><small>看看你能陪到哪里</small></span><span class="step-arrow" aria-hidden="true">›</span></button>
+          <button data-step="3" disabled><span class="step-number">03</span><span class="step-copy"><strong>写回应</strong><small>生成后改成你的话</small></span><span class="step-arrow" aria-hidden="true">›</span></button>
         </nav>
 
         <section id="step-1" class="journey-step" aria-labelledby="source-heading">
-          <div class="step-heading"><span class="eyebrow">先从TA的那句话开始</span><h2 id="source-heading" tabindex="-1">TA刚刚，说了什么？</h2><p>可以放一两句原话，也可以先用小场景试试。</p></div>
+          <div class="step-heading"><span class="eyebrow">先只看已经发生的事</span><h2 id="source-heading" tabindex="-1">把对方的话放在这里</h2><p>一两句就够。没有真实对话时，也可以先用示例。</p></div>
           <div class="message-panel">
             <div class="message-heading"><span class="message-label"><i aria-hidden="true"></i> 朋友发来的话</span><button id="use-own" class="text-button">写朋友的原话 ↗</button></div>
             <div class="scene-switcher" aria-label="虚构练习情境"><button data-example="friend" aria-pressed="true">工作好累</button><button data-example="partner" aria-pressed="false">想静一静</button><button data-example="family" aria-pressed="false">忙不过来</button></div>
@@ -57,7 +58,7 @@
             <textarea id="source" rows="3" maxlength="1600" spellcheck="false" placeholder="比如：今天真的好累，只想找人说两句。"></textarea>
             <div class="source-meta"><span id="source-mode">虚构场景 · 可以放心试</span><span id="source-count">0 / 1600</span></div>
           </div>
-          <details class="own-detail background-detail"><summary>你们之间，还有什么背景？ <span aria-hidden="true">＋</span></summary><label for="background" class="sr-only">关系和之前发生的事</label><textarea id="background" rows="3" maxlength="400" placeholder="比如：我们是室友；TA最近连续加班；上次我急着给建议，TA觉得没被听见。只写你知道的，不用猜。"></textarea></details>
+          <div class="own-detail background-detail fixed-detail"><div class="fixed-detail-heading"><span>你们之间，还有什么背景？</span><small>可以不填</small></div><label for="background" class="sr-only">关系和之前发生的事</label><textarea id="background" rows="3" maxlength="400" placeholder="比如：我们是室友；TA最近连续加班；上次我急着给建议，TA觉得没被听见。只写你知道的，不用猜。"></textarea></div>
           <div class="field-heading"><h3>TA有没有说，希望你怎么陪？</h3><span>不确定也没关系</span></div>
           <div id="need-options" class="need-grid" role="group" aria-label="朋友明确表达的想法"></div>
           <p id="need-note" class="soft-hint">没说清楚，就给彼此留一个问问的机会。</p>
@@ -65,7 +66,7 @@
         </section>
 
         <section id="step-2" class="journey-step" aria-labelledby="capacity-heading" hidden>
-          <div class="step-heading"><span class="eyebrow">关心里，也有你的位置</span><h2 id="capacity-heading" tabindex="-1">这会儿，你能陪多少？</h2><p>按此刻真实的状态选，不用勉强撑起整个世界。</p></div>
+          <div class="step-heading"><span class="eyebrow">关心里也有你的位置</span><h2 id="capacity-heading" tabindex="-1">你现在有多少余力？</h2><p>按真实状态选。边界说清楚，反而更容易陪下去。</p></div>
           <div id="capacity-options" class="capacity-options" role="group" aria-label="我现在的状态"></div>
           <div id="now-fields" class="conditional-field" hidden><label for="reply-minutes">给这次聊天留</label><select id="reply-minutes"><option value="10">10 分钟</option><option value="20">20 分钟</option><option value="30">30 分钟</option></select><span>短短一会儿，也算陪伴。</span></div>
           <div id="later-fields" class="conditional-field later-field" hidden><label for="later">大概什么时候方便？</label><input id="later" maxlength="80" placeholder="比如：今晚九点后。不确定可以不填。"></div>
@@ -76,7 +77,8 @@
         </section>
 
         <section id="step-3" class="journey-step" aria-labelledby="reply-heading" hidden>
-          <div class="step-heading"><span class="eyebrow">最后，让它听起来像你</span><h2 id="reply-heading" tabindex="-1">这一句，你想怎么说？</h2><p>这只是一个开头。删一点、改一点，顺了再发。</p></div>
+          <img class="section-sticker note-sticker" src="note-sticker.png" alt="" aria-hidden="true">
+          <div class="step-heading"><span class="eyebrow">最后要像你自己</span><h2 id="reply-heading" tabindex="-1">把这句话改成你的语气</h2><p>AI 只起一个头。删一点、改一点，顺了再发。</p></div>
           <div class="choice-summary"><span id="reply-context"></span><button class="text-button" data-back="2">调整选择 ↗</button></div>
           <div class="reply-paper">
             <div class="paper-label"><span><i aria-hidden="true"></i> 你的回应草稿</span><span id="draft-mode">可以直接修改</span></div>
@@ -101,10 +103,13 @@
     </section>
 
     <section id="plan-view" hidden>
+      <div class="plan-intro">
       <div class="plan-heading"><button class="text-button" data-view="reply">← 回到那句话</button><span class="eyebrow">把关心，放进日常里</span><h1>不说「改天约」，<span>就留一小会儿。</span></h1><p>选件小事，商量时间，再把约定留好。到时想改，也没关系。</p></div>
+        <figure class="plan-art"><div class="art-window"><img src="friendship-walk-oil.png" width="1536" height="1024" loading="lazy" alt="油画：两位女生挽着手臂沿河边缓缓散步，一位望向远处出神，另一位安静地陪伴着她"></div></figure>
+      </div>
       <div class="plan-layout">
         <section class="plan-form" aria-labelledby="plan-form-heading">
-          <h2 id="plan-form-heading" class="section-title"><span>01</span> 想想怎么一起待会儿</h2>
+          <h2 id="plan-form-heading" class="section-title">想想怎么一起待会儿</h2>
           <label class="field-label" for="person">这次想陪谁？ <small>昵称只留给自己看</small></label><input id="person" maxlength="40" placeholder="一个昵称就够了">
           <fieldset><legend>一起做什么？</legend><div id="action-options" class="action-grid"></div></fieldset>
           <label class="field-label" for="plan-detail">还有什么想说的？ <small>可以不填</small></label><textarea id="plan-detail" maxlength="180" rows="2" placeholder="比如：楼下散步，不聊工作。"></textarea>
@@ -114,8 +119,8 @@
           <p id="plan-error" class="inline-error" role="status" hidden></p>
         </section>
         <aside class="pact-column">
-          <h2 class="section-title"><span>02</span> 问问TA，这样行不行</h2>
-          <article class="pact"><div class="pact-top"><span>A LITTLE TIME, FOR YOU.</span><span id="pact-status">还没约好</span></div><div class="pact-calendar"><strong id="pact-day">—</strong><div><span id="pact-month">留一小段时间</span><span id="pact-clock">不用安排整个未来</span></div><span class="pact-symbol" aria-hidden="true">↗</span></div><h2 id="pact-action">从一件小事开始</h2><p id="pact-detail">选一件你做得到，TA也愿意的事。</p><div class="pact-duration"><span id="pact-minutes">约 20 分钟</span><span>随时可以商量变更</span></div></article>
+          <h2 class="section-title">问问TA，这样行不行</h2>
+          <article class="pact"><div class="pact-top"><span>留一小段时间</span><span id="pact-status">还没约好</span></div><div class="pact-calendar"><strong id="pact-day">待定</strong><div><span id="pact-month">留一小段时间</span><span id="pact-clock">不用安排整个未来</span></div><span class="pact-symbol" aria-hidden="true">↗</span></div><h2 id="pact-action">从一件小事开始</h2><p id="pact-detail">选一件你做得到，TA也愿意的事。</p><div class="pact-duration"><span id="pact-minutes">约 20 分钟</span><span>随时可以商量变更</span></div></article>
           <label class="field-label" for="invitation">把这段邀请发给TA</label><textarea id="invitation" rows="4" readonly placeholder="选好小事和时间，这里就会写好一段邀请。"></textarea><button id="copy-invitation" class="primary" disabled>复制邀请，去问问TA <span aria-hidden="true">↗</span></button>
           <div class="confirm-section"><label class="confirmation"><input id="confirmed" type="checkbox"><span>TA说好啦<small>聊过之后，再回来记下这次约定。</small></span></label><div class="plan-actions"><button class="secondary" id="calendar" disabled>留到日历里 ↗</button><button class="secondary" id="complete" disabled>这次，陪到啦 ✓</button></div><a id="calendar-file" class="file-link" hidden download="在场-一次小约定.ics">日历准备好啦，点这里保存 ↓</a><p class="small-note">日历需要自己导入。在场不会自动提醒或通知TA。</p></div>
           <div id="done-note" class="done-note" hidden><strong>这一小会儿，很好。</strong><p>不用给陪伴打分。下次想见面，再约就好。</p></div>
@@ -124,10 +129,9 @@
       <div class="save-bar"><div><strong>给下次回来，留一份约定。</strong><span>只保留安排，不保存聊天原话和回应。</span></div><div><button class="text-button" id="load-plan">找回上次的约定</button><button class="secondary" id="save-plan">保存在这台设备 ↗</button></div></div>
     </section>
 
-    <footer class="site-footer"><span>认真关心，不必满分。<i>just be here.</i></span><div><button data-open="about">关于在场 / EchoGlow</button><button data-open="privacy">隐私与记录</button><button data-open="help">遇到紧急情况</button><button id="new-session">重新来一次 ↻</button></div></footer>
+    <footer class="site-footer"><span>认真关心，不必满分。</span><div><button data-open="about">关于在场 / EchoGlow</button><button data-open="privacy">隐私与记录</button><button data-open="help">遇到紧急情况</button><button id="new-session">重新来一次 ↻</button></div></footer>
   </main>
 <dialog id="about"><button class="close" data-close aria-label="关闭产品说明">×</button><span class="kicker">给不会安慰，也想当好朋友的人。</span><h2>不是教你说漂亮话。<br>是陪你试一句真心话。</h2><p>朋友发来“最近不太好”，你盯着输入框，删删改改，最后只发了一个“抱抱”。在场就是为这个小小的卡住时刻做的。</p><p>看看朋友说了什么，想想自己能做多少，再试着回一句。没有安慰分数，没有“正确答案”，也不要求你承担朋友的全部情绪。</p><div class="companion-row"><div><span>EchoGlow</span><strong>说不清的人，用它表达。</strong></div><span aria-hidden="true">→</span><div><span>在场</span><strong>不知道怎么回的人，在这里试一句。</strong></div></div><p>两者可以配套，也能单独使用。把 EchoGlow 卡片中的文字贴过来就行；普通聊天同样可以。不关联账号，不自动读取卡片，也不识别图片。</p></dialog>
 <dialog id="privacy"><button class="close" data-close aria-label="关闭隐私说明">×</button><span class="kicker">什么时候发送，先说清楚。</span><h2>默认不留聊天记录。</h2><p>输入、切换步骤和选择状态时，不会发送聊天内容。只有点击「让 AI 帮我起个头」「再生成一版」或确认重新生成，才把原话、关系背景、补充文字及当前选择交给本应用的服务端，再由服务端调用 DeepSeek。请先去掉姓名、地址和不必分享的细节。</p><p>本应用不主动保存 AI 对话或记录原话日志；模型服务商及托管平台仍会处理请求，不能据此保证不留存。只有你主动保存时，本浏览器才留下一个约定：昵称、具体安排、时间和你手动记录的状态。共享设备的人可能看见。这份数据与 EchoGlow 完全分开。</p><p>复制、日历下载和发送，会在相应软件留下内容；你的日历服务也可能同步安排中的细节。未保存的内容刷新后丢失，浏览器自身可能恢复表单。页面托管服务会收到普通访问请求。</p><button id="delete-plan" class="danger-button">移除本应用保存的约定</button><p class="small-note">不碰 EchoGlow 数据，也不会删除已导入的日历。</p></dialog>
 <dialog id="help"><button class="close" data-close aria-label="关闭紧急帮助">×</button><span class="kicker">安全，比一句好回复更重要。</span><h2>眼下有危险，<br>先找现实中的帮助。</h2><p>如果朋友有立即伤害自己的危险，不要等这里写好回复。请联系当地紧急服务、医护人员或能到场的可信任的人；在确保自身安全的情况下，不要让对方独处。</p><p>远程联系时，你可能无法确认TA的安全，不必独自承担。把担心和已知情况告诉能实际提供帮助的人。</p><p class="help-disclaimer">在场不是医疗、心理咨询或救援服务。没有真人值守，不能定位、判断风险或代为呼救。</p><a href="https://www.who.int/news-room/questions-and-answers/item/suicide" target="_blank" rel="noopener noreferrer">WHO：如何帮助可能考虑自杀的人 ↗</a></dialog>
 <dialog id="confirm-dialog"><h2 id="confirm-title"></h2><p id="confirm-text"></p><div class="dialog-actions"><button class="secondary" id="cancel">取消</button><button class="primary" id="accept">确认</button></div></dialog><div id="toast" role="status" aria-live="polite"></div><noscript><p>请启用 JavaScript 使用聊天练习。如有眼前的危险，请直接联系当地紧急服务。</p></noscript></body></html>
-

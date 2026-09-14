@@ -1,8 +1,10 @@
 'use strict';
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path'),C=require('./core.js'),AI=require('./ai.cjs');
 // Serve only public assets. Environment files and server code are never static routes.
-const assets={'/':'index.html','/index.html':'index.html','/style.css':'style.css','/core.js':'core.js','/app.js':'app.js','/mark.svg':'mark.svg','/friendship.png':'friendship.png'};
-const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.svg':'image/svg+xml','.png':'image/png'};
+const assets={'/':'index.html','/index.html':'index.html','/style.css':'style.css','/core.js':'core.js','/app.js':'app.js','/mark.svg':'mark.svg','/friendship-warm.png':'friendship-warm.png','/ambient-vignette.png':'ambient-vignette.png','/note-sticker.png':'note-sticker.png','/window-sticker.png':'window-sticker.png'};
+const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.woff':'font/woff','.woff2':'font/woff2','.txt':'text/plain; charset=utf-8'};
+assets['/friendship-oil.png']='friendship-oil.png';
+assets['/friendship-walk-oil.png']='friendship-walk-oil.png';
 function createServer({config=AI.readConfig(),fetchModel=fetch}={}){
  let windowAt=Date.now(),requests=0,active=0;
  const server=http.createServer(async(req,res)=>{
@@ -28,6 +30,11 @@ function createServer({config=AI.readConfig(),fetchModel=fetch}={}){
    const closed=()=>controller.abort();res.on('close',closed);
    try{const result=await AI.generate(input,config,fetchModel,controller.signal);json(200,result);}catch(e){json(e.status||502,{error:controller.signal.aborted?'生成等待太久，请稍后重试。':e.status?e.message:'暂时连不上 AI 服务，请稍后再试。'});}finally{clearTimeout(timeout);res.removeListener('close',closed);active--;}
    return;
+  }
+  if(['GET','HEAD'].includes(req.method)&&url.pathname.startsWith('/fonts/')){
+   const root=path.resolve(__dirname,'fonts'),filename=path.resolve(__dirname,'.'+url.pathname),ext=path.extname(filename);
+   if(!filename.startsWith(root+path.sep)||!['.css','.woff','.woff2','.txt'].includes(ext)){res.writeHead(404);return res.end('Not found');}
+   return fs.readFile(filename,(err,data)=>{if(err){res.writeHead(404);return res.end('Not found');}res.writeHead(200,{'Content-Type':types[ext],'Cache-Control':'public, max-age=31536000, immutable','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'});res.end(req.method==='HEAD'?undefined:data);});
   }
   if(!['GET','HEAD'].includes(req.method)||!Object.hasOwn(assets,url.pathname)){res.writeHead(404);return res.end('Not found');}
   const filename=assets[url.pathname];

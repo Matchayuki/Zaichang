@@ -1,6 +1,5 @@
 # 在场 · 陪你把关心说出口
 
-链接🔗https://matchayuki.github.io/Zaichang/
 一个面向“收到朋友倾诉，却不知道怎么回”的独立 Web 应用。EchoGlow 帮人表达感受，在场帮接收者试着回应；也可以只拿一段普通聊天来用。两者没有账号、数据或运行依赖。
 
 ## 使用
@@ -46,4 +45,3 @@
 紧急帮助文字参考 [WHO 的亲友支持建议](https://www.who.int/news-room/questions-and-answers/item/suicide)，不据此声称本应用具有临床效果。日历格式参考 [RFC 5545](https://www.rfc-editor.org/rfc/rfc5545)。
 
 `friendship.png` 为内置 imagegen 工具生成的插画，非用户或真实人物照片；`mark.svg` 为代码绘制的抽象标识。生成说明见 `ASSET-NOTES.md`。
-
