@@ -228,3 +228,26 @@ dialog{border-radius:6px}dialog .close{border:1px solid var(--line);border-radiu
   .intro{grid-template-columns:1fr}
   .friendship-art{display:block;width:100%;max-width:520px;justify-self:center;margin-top:4px}
 }
+
+/* Reminder placed under the generated draft: a starting point, not a finished reply. */
+.draft-reminder{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:14px 0 0;
+  padding:12px 14px;
+  border-left:3px solid var(--accent);
+  border-radius:5px;
+  background-color:var(--accent-soft);
+  background-image:repeating-linear-gradient(95deg,rgba(103,70,48,.035) 0 1px,transparent 1px 12px);
+  color:var(--muted);
+  font-family:"LXGW WenKai Screen",cursive;
+  font-size:12.5px;
+  line-height:1.8;
+  letter-spacing:.025em;
+}
+.draft-reminder-mark{flex:0 0 auto;font-size:14px;line-height:1.6}
+.draft-reminder strong{display:block;margin-bottom:2px;color:var(--accent-dark);font-weight:700;font-synthesis:weight;letter-spacing:.03em}
+@media(max-width:760px){
+  .draft-reminder{gap:8px;padding:11px 12px;font-size:12px;line-height:1.75}
+}
