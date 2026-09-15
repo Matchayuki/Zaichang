@@ -91,7 +91,7 @@ $('calendar').onclick=()=>{try{const text=C.calendar(p,crypto.randomUUID());revo
 $('complete').onclick=()=>{const d=C.startDate(p.at);if(!p.confirmed||!d||d.getTime()>Date.now())return;ask('记录这次陪伴已经完成？','这只是你在本机的记录，不会通知对方。没有完成也不需要勉强标记。',()=>{p.done=true;revokeCalendar();renderPlan();toast('已在当前页面记录。若要下次保留，请保存到这台设备。');});};
 $('save-plan').onclick=()=>{if(!p.action||!C.startDate(p.at)){toast('先选一件事，并填好有效时间。');return;}ask('在这台设备保留这一份约定？','保存昵称、具体安排、时间和确认状态。若已有本应用的约定，会被替换；聊天原话与回应不会保存。',()=>{try{const old=localStorage.getItem(KEY);if(old)C.parseSaved(old);localStorage.setItem(KEY,JSON.stringify(C.plan(p)));toast('约定已保存。后续改动需要再次保存，不会自动同步。');}catch{toast('保存未完成，原记录未覆盖。存储可能不可用或原记录损坏。');}});};
 $('load-plan').onclick=()=>{let saved;try{saved=C.parseSaved(localStorage.getItem(KEY));}catch{toast('无法读取保存的约定，原记录未覆盖。');return;}if(!saved){toast('这里还没有保存的约定。');return;}ask('打开本机保存的约定？','当前未保存的安排会被替换。回应工作台的内容不受影响。',()=>{p=saved;revokeCalendar();syncPlanFields();toast('已找回约定。状态来自你之前的记录，不代表对方当前意愿。');});};
-$('delete-plan').onclick=()=>ask('移除本应用保存的约定？','本机保存的这一份约定将无法在这里恢复。当前页面、EchoGlow 数据和已导入的日历不受影响。',()=>{try{localStorage.removeItem(KEY);toast('本应用保存的约定已移除，无法在这里恢复。');}catch{toast('移除失败，请检查浏览器存储权限。');}});
+$('delete-plan').onclick=()=>ask('移除本应用保存的约定？','本机保存的这一份约定将无法在这里恢复。当前页面、显影数据和已导入的日历不受影响。',()=>{try{localStorage.removeItem(KEY);toast('本应用保存的约定已移除，无法在这里恢复。');}catch{toast('移除失败，请检查浏览器存储权限。');}});
 function reset(){startResponse('','');p=C.planDefaults();revokeCalendar();syncPlanFields();go('reply');}
 $('new-session').onclick=()=>ask('开始新的一次？','当前未保存的原话、回应和安排会清空。本机已保存的约定不会删除。',reset);
 const zone=Intl.DateTimeFormat().resolvedOptions().timeZone;$('timezone-note').textContent='按当前设备时区 '+zone+' 填写；异地联系时，请先核对彼此的时间。';
